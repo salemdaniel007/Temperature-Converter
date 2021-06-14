@@ -1,5 +1,5 @@
-import Vuex from 'vuex';
 import Vue from 'vue';
+import Vuex from 'vuex';
 import converter from './modules/converter';
 
 //load Vuex

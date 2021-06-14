@@ -24,6 +24,7 @@ body {
   background: #e8f7f0;
 }
 .container {
+  height: 100vh;
   max-width: 1100px;
   margin: 3rem 1rem auto;
   overflow: auto;
