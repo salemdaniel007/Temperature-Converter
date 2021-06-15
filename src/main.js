@@ -1,10 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
-import Notifications from 'vue-notification'
+import Toasted from 'vue-toasted';
+
+
+Vue.use(Toasted, {
+  type:'error',
+  duration: 5000
+})
 
 Vue.config.productionTip = false
-Vue.use(Notifications)
 
 new Vue({
   store,

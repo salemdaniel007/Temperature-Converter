@@ -20,7 +20,7 @@
             <h2>{{ result }}</h2>
         </div>
         </div>
-        <h3 class="comment">  Made with ❤️ by SecondSon</h3>
+        <h3 class="comment">  Made with ❤️ by Salem</h3>
         
     </div>
 </template>
@@ -44,12 +44,7 @@ export default {
         },
         validateForm: function(e) {
             if(isNaN(e.target.value)) {
-                this.$notify({
-                    group: 'foo',
-                    type: 'warn',
-                    title: 'Be not drunk with wine!',
-                    text: 'Oga use number jare..'
-                    });
+               this.$toasted.show('ogaa... warn yourself!')
             }
         }
     },
