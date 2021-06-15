@@ -1,29 +1,75 @@
 <template>
-    <div class="card">
+    <div>
+        <h1>A temperture converter that doesn't stink</h1>
+        <div class="card">
         <div class="temperature">
             <div class="degrees">
                 <label for="degrees">Degrees</label>
-                <input type="text">
+                <input @change="validateForm" type="text" v-model="temperature">
             </div>
             <div class='type'>
                 <label for="type">Type</label>
-                <select name="Temperatures" id="Temperature">
-                    <option value="Farenheit">Farenheit</option>
-                    <option value="Celsius">Celsius</option>
+                <select name="Temperatures" id="Temperature" @change="changeTemp">
+                    <option v-for='type in selected' :key='type'>{{ type }}</option>
                 </select>
             </div>
-            <button class="convert">convert</button>
+            <button @click="cToF" class="convert">convert</button>
         </div>
         <div class="result">
             <p>Result</p>
-            <h2></h2>
+            <h2>{{ result }}</h2>
         </div>
+        </div>
+        <h3 class="comment">  Made with ❤️ by SecondSon</h3>
+        
     </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+// import { mapFields } from 'vuex-map-fields';
 export default {
-    name:'AppConverter'
+    name:'AppConverter',
+    methods: {
+        ...mapActions(['cToF']),
+        changeTemp: function(e){
+            console.log("Show "+e.target.value+ " fields")
+            if (e.target.value == 'Farenheit'){
+              this.$store.commit('fTrue');
+              this.$store.commit('cFalse');
+            }else if (e.target.value == 'Celsius') {
+              this.$store.commit('cTrue');
+              this.$store.commit('fFalse');
+            }
+        },
+        validateForm: function(e) {
+            if(isNaN(e.target.value)) {
+                this.$notify({
+                    group: 'foo',
+                    type: 'warn',
+                    title: 'Be not drunk with wine!',
+                    text: 'Oga use number jare..'
+                    });
+            }
+        }
+    },
+    computed: {
+        selected () {
+            return this.$store.getters.selected
+        },
+        result () {
+            return this.$store.getters.result
+        },
+        temperature: {
+            get () {
+            return this.$store.state.temperature;
+            },
+            set (value) {
+            this.$store.commit('updateTemp', value);
+            }
+        }
+    }
+    
 
 }
 </script>
@@ -48,7 +94,16 @@ export default {
 
 .result {
     margin: 12px;
-    margin-bottom: 20rem;
+}
+
+.result p {
+     margin-bottom: 1px;
+}
+
+.result h2 {
+    margin: auto;
+    margin-bottom: 1rem;
+    margin-left: .4rem;
 }
 
 .temperature {
@@ -79,6 +134,20 @@ label {
 
 .type {
     margin-left: 13px;
+}
+
+h1 {
+    text-align: center;
+    margin: auto;
+    margin-top: 2rem;
+    padding: 2rem;
+    color: rgb(133, 214, 177);
+}
+
+h3 {
+    margin-top: 17rem;
+    text-align: center;
+    
 }
 
 input[type="text"] {

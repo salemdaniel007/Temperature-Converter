@@ -2,6 +2,7 @@
   <div id="app">
     <div class="container">
       <app-converter/>
+      <notifications group="foo" position="center" />
     </div>
   </div>
 </template>
@@ -24,10 +25,11 @@ body {
   background: #e8f7f0;
 }
 .container {
+  position: relative;
   height: 100vh;
   max-width: 1100px;
-  margin: 3rem 1rem auto;
-  overflow: auto;
+  margin: auto;
+  max-height: 600px;
   padding: 0 2rem;
 }
 </style>
