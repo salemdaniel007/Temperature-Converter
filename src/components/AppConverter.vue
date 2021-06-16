@@ -1,9 +1,10 @@
 <template>
     <div>
-        <h1>A temperture converter that doesn't stink</h1>
+        <h1>A Temperture Converter That Doesn't Stink!</h1>
         <div class="card">
-        <div class="temperature">
-            <div class="degrees">
+        <div >
+            <form class="temperature" @submit.prevent="cToF">
+                <div class="degrees">
                 <label for="degrees">Degrees</label>
                 <input @change="validateForm" type="text" v-model="temperature">
             </div>
@@ -13,11 +14,12 @@
                     <option v-for='type in selected' :key='type'>{{ type }}</option>
                 </select>
             </div>
-            <button @click="cToF" class="convert">convert</button>
+            <button class="convert">convert</button>
+            </form>
         </div>
         <div class="result">
             <p>Result</p>
-            <h2>{{ result }}</h2>
+            <h2 class="inset">{{ result }}</h2>
         </div>
         </div>
         <h3 class="comment">  Made with ❤️ by Salem</h3>
@@ -57,7 +59,7 @@ export default {
         },
         temperature: {
             get () {
-            return this.$store.state.temperature;
+            return this.$store.state.temperature
             },
             set (value) {
             this.$store.commit('updateTemp', value);
@@ -142,6 +144,7 @@ h1 {
 h3 {
     margin-top: 17rem;
     text-align: center;
+    color: rgb(54, 50, 54);
     
 }
 
@@ -150,6 +153,12 @@ input[type="text"] {
   border: 1px solid #92a3dd;
   outline: 0;
   grid-column: 1 / 2;
+  border-radius: 5px;
+    border-style: inset;
+    height: 2rem;
+    padding: 4px;
+    background: rgb(247, 245, 242);
+    color: rgb(80, 78, 80);
 }
 
 .convert {
@@ -161,6 +170,16 @@ input[type="text"] {
     color: #fff;
     border: 1px #41b883 solid;
     cursor: pointer;
+}
+
+h2.inset {
+    border-radius: 5px;
+    border-style: inset;
+    width: 43%;
+    height: 2rem;
+    padding: 4px;
+    background: rgb(247, 245, 242);
+    color: rgb(80, 78, 80);
 }
 
 .card:hover {
