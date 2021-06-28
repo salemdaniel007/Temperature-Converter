@@ -2,28 +2,22 @@
     <div>
         <h1>A Temperture Converter That Doesn't Stink!</h1>
         <div class="card">
-        <div >
-            <form class="temperature" @submit.prevent="cToF">
-                <div class="degrees">
-                <label for="degrees">Degrees</label>
-                <input @change="validateForm" type="text" v-model="temperature">
+            <div >
+                <form  class="temperature">
+                    <label for="degrees">Degrees</label>
+                    <input type="text" v-model="temperature">
+                        <label for="type">From</label>
+                        <select name="Temperatures" id="Temperature" @change="changeTemp">
+                            <option v-for='type in selected' :key='type'>{{ type }}</option>
+                        </select>
+                        <button  @click.prevent="cToF" class="convert" value="submit" type="submit">Convert</button>
+                </form>
+                <div class="result">
+                    <p>Result</p>
+                    <h2 class="inset"> {{ result }}</h2>
+                </div>
             </div>
-            <div class='type'>
-                <label for="type">Type</label>
-                <select name="Temperatures" id="Temperature" @change="changeTemp">
-                    <option v-for='type in selected' :key='type'>{{ type }}</option>
-                </select>
-            </div>
-            <button class="convert">convert</button>
-            </form>
         </div>
-        <div class="result">
-            <p>Result</p>
-            <h2 class="inset">{{ result }}</h2>
-        </div>
-        </div>
-        <h3 class="comment">  Made with ❤️ by Salem</h3>
-        
     </div>
 </template>
 
@@ -44,10 +38,8 @@ export default {
               this.$store.commit('fFalse');
             }
         },
-        validateForm: function(e) {
-            if(isNaN(e.target.value)) {
-               this.$toasted.show('ogaa... warn yourself!')
-            }
+        storeTemp: function(e) {
+            this.$store.getters.temp = e.target.value
         }
     },
     computed: {
@@ -57,9 +49,12 @@ export default {
         result () {
             return this.$store.getters.result
         },
+        temp () {
+            return this.$store.getters.temp
+        },
         temperature: {
             get () {
-            return this.$store.state.temperature
+            return this.$store.getters.temperature
             },
             set (value) {
             this.$store.commit('updateTemp', value);
@@ -76,21 +71,34 @@ export default {
 .card {
     padding: 2px 16px;
     margin: auto;
-    align-content: center;
-    width: 400px;    
-    height: 200px;
+    width: 500px;    
+    height: 400px;
     background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
-}
-.degrees {
-    margin: auto;
-    margin-bottom: 2rem;
-    margin-left: 1rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+    border-radius: 5px;
+    z-index: 1;
+    background: inherit;
+    overflow: hidden;
 }
 
+.card:before {
+  content: "";
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+  filter: blur(10px);
+  margin: -20px;
+}
 .result {
-    margin: 12px;
+    display: flex;
+    margin: auto;
+    margin-top: 6rem;
 }
 
 .result p {
@@ -104,12 +112,11 @@ export default {
 }
 
 .temperature {
-    display: grid;
-    height: 5rem;
-    margin-top: 25px;
-    justify-content: space-between;
-    grid-template-columns: auto auto auto auto;
-    
+    display: flex;
+    justify-content: space-around;
+    height: 3rem;
+    margin-top: 2rem;
+    flex-flow: row nowrap;
 }
 
 
@@ -126,12 +133,13 @@ label {
 
 .temperature select {
     padding: 11px 5px;
-    border: 1px solid #92a3dd;
+    background-color: #959fd4;
+    color: rgb(239, 236, 243);
+    border: 1px solid #959fd4;
+    font-weight: 750;
+    border-radius: 5px;
 }
 
-.type {
-    margin-left: 13px;
-}
 
 h1 {
     text-align: center;
@@ -150,45 +158,38 @@ h3 {
 
 input[type="text"] {
   padding: 12px;
-  border: 1px solid #92a3dd;
+  border: 1px solid #eef0f5;
   outline: 0;
-  grid-column: 1 / 2;
   border-radius: 5px;
-    border-style: inset;
-    height: 2rem;
-    padding: 4px;
-    background: rgb(247, 245, 242);
-    color: rgb(80, 78, 80);
+  border-style: inset;
+  background: rgb(247, 245, 242);
+  color: rgb(80, 78, 80);
 }
 
 .convert {
-    height: 2.6rem;
-    margin: 12px;
-    margin-top: 24px;
-    border-radius: 3px;
-    background: #7491f0;
+    background: #8d97ca;
     color: #fff;
-    border: 1px #41b883 solid;
+    padding: 11px 5px;
+    background-color: #959fd4;
+    color: rgb(239, 236, 243);
+    border: 1px solid #959fd4;
+    font-weight: 750;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 h2.inset {
     border-radius: 5px;
     border-style: inset;
-    width: 43%;
-    height: 2rem;
+    width: 300px;
+    height: 3rem;
     padding: 4px;
     background: rgb(247, 245, 242);
-    color: rgb(80, 78, 80);
+    color: #303a6d;
 }
 
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-@media (max-width: 500px) {
-  .converter {
-    grid-template-columns: 5fr;
-  }
 }
 
 </style>
