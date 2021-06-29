@@ -37,6 +37,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 50%;
   padding: 0 2rem;
   justify-content: space-between;
   align-items: center;
@@ -57,6 +58,7 @@ body {
   and (-webkit-min-device-pixel-ratio: 2) {
     .container {
       height: 50vh;
+      width: 50%;
     }
 }
 </style>
