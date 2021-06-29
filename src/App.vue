@@ -37,7 +37,6 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 50%;
   padding: 0 2rem;
   justify-content: space-between;
   align-items: center;
