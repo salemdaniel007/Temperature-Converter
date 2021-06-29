@@ -73,7 +73,6 @@ export default {
     margin: auto;
     width: 500px;    
     height: 400px;
-    background-color: white;
     transition: 0.3s;
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
     border-radius: 5px;
@@ -122,13 +121,14 @@ export default {
 
 p {
     color: rgb(133, 124, 118);
-    font-size: 0.8rem;
+    font-size: 1rem;
+    color: rgb(34, 52, 112);
     margin-left: 5px;
 }
 
 label {
-    font-size: 0.7rem;
-    color: rgb(133, 124, 118);
+    font-size: 1rem;
+    color: rgb(34, 52, 112);
 }
 
 .temperature select {
@@ -146,7 +146,7 @@ h1 {
     margin: auto;
     margin-top: 2rem;
     padding: 2rem;
-    color: rgb(133, 214, 177);
+    color: rgb(53, 85, 172);
 }
 
 h3 {
