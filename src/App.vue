@@ -19,15 +19,15 @@ export default {
 </script>
 
 <style>
+
 body {
-  font-family: "Audiowide", sans-serif;
-  font-size: 30px;
+  font-family: 'Indie Flower',cursive;
+  font-size: 20px;
   text-shadow: 3px 3px 3px #ababab;
   line-height: 1.6;
   background-color: #def3ff;
   background-color: #D9AFD9;
-background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
-
+  background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
   background-attachment: fixed;
   background-size: cover;
 }
@@ -42,5 +42,6 @@ background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
 .comment {
   color: #172886;
   font-size: 1.4rem;
+  width: 250px;
 }
 </style>
