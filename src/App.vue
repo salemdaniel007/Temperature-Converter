@@ -2,7 +2,9 @@
   <div id="app">
     <div class="container">
       <app-converter/>
-      <h3 class="comment">  Made with ❤️ by Salem</h3>
+      <div class="comment_container">
+      <p class="comment">  Made with ❤️ by Salem</p>
+      </div>
     </div>
   </div>
 </template>
@@ -39,9 +41,22 @@ body {
   justify-content: space-between;
   align-items: center;
 }
+
+.comment_container {
+  display: flex;
+}
+
 .comment {
   color: #172886;
   font-size: 1.4rem;
-  width: 250px;
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .container {
+      height: 50vh;
+    }
 }
 </style>
