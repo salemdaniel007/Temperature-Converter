@@ -13,9 +13,9 @@
                         <button  @click.prevent="cToF" class="convert" value="submit" type="submit">Convert</button>
                 </form>
                 <div class="result">
-                    <p>Result</p>
-                    <h2 class="inset"> {{ result }}</h2>
-                </div>
+                            <p>Result</p>
+                            <h2 class="inset"> {{ result }}</h2>
+                 </div>
             </div>
         </div>
     </div>
@@ -190,6 +190,50 @@ h2.inset {
 
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    .card {
+      width: 130px;
+      height: 350px;
+    }
+    h1 {
+        margin-top: 0px;
+        font-size: 13px;
+    }
+    .temperature {
+        flex-flow: column nowrap;
+        justify-content: end;
+    }
+    label {
+        font-size: 10px;
+    }
+    input[type="text"] {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    .temperature select {
+        padding: 10px 5px;
+        margin-bottom: 10px;
+    }
+    .convert {
+        padding: 10px 5px;
+    }
+    .result {
+        flex-direction: column;
+        margin-top: 9rem;
+    }
+    p {
+        font-size: 12px;
+    }
+    h2.inset {
+        height: 2rem;
+        width: 115px;
+        margin-left:0rem;
+    }
 }
 
 </style>
