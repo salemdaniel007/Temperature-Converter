@@ -193,8 +193,8 @@ h2.inset {
 }
 
 @media only screen 
-  and (min-device-width: 320px) 
-  and (max-device-width: 568px)
+  and (min-device-width: 280px) 
+  and (max-device-width: 731px)
   and (-webkit-min-device-pixel-ratio: 2) {
     .card {
       width: 250px;
