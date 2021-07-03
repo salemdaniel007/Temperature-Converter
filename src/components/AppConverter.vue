@@ -197,12 +197,12 @@ h2.inset {
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
     .card {
-      width: 130px;
+      width: 250px;
       height: 350px;
     }
     h1 {
         margin-top: 0px;
-        font-size: 13px;
+        font-size: 30px;
     }
     .temperature {
         flex-flow: column nowrap;
@@ -231,7 +231,7 @@ h2.inset {
     }
     h2.inset {
         height: 2rem;
-        width: 115px;
+        width: 90%;
         margin-left:0rem;
     }
 }
