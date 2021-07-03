@@ -6,7 +6,7 @@
       <p class="comment">  Made with ❤️ by Salem</p>
       </div>
     </div>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -21,7 +21,10 @@ export default {
 </script>
 
 <style>
-
+* {
+  margin: 0px;
+  padding: 0px;
+}
 body {
   font-family: 'Indie Flower',cursive;
   font-size: 20px;
@@ -41,23 +44,24 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-
-.comment_container {
-  display: flex;
-}
-
 .comment {
   color: #172886;
   font-size: 1.4rem;
 }
 
 @media only screen 
-  and (min-device-width: 320px) 
-  and (max-device-width: 568px)
+  and (min-device-width: 280px) 
+  and (max-device-width: 731px)
   and (-webkit-min-device-pixel-ratio: 2) {
+    h1 {
+      font-size: 8px;
+    }
     .container {
-      height: 50vh;
-      width: 50%;
+      width: 100vw;
+      height: 100vh;
+    }
+    .comment {
+      font-size: 25px;
     }
 }
 </style>
