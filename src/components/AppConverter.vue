@@ -79,6 +79,8 @@ export default {
     z-index: 1;
     background: inherit;
     overflow: hidden;
+	background-position: right;
+    backdrop-filter: blur(5px);
 }
 
 .card:before {

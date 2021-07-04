@@ -57,7 +57,6 @@ body {
   and (-webkit-min-device-pixel-ratio: 2) {
     .container {
       height: 50vh;
-      width: 50%;
     }
 }
 </style>
