@@ -27,20 +27,23 @@ const actions = {
     cToF({ commit }, celsius) {
         const option = state.options.Farenheit
         const anotherOption = state.options.Celsius
-
-        if(isNaN(state.temperature)) { 
+        if(state.temperature === '') {
+            state.disable = true;
+        } else if(isNaN(state.temperature)) {
+            state.disable = false; 
             return Toastify({
                 text: "Oga input number!",
                 backgroundColor: "linear-gradient(to right, #bd792b, #d12417)",
                 duration: 3000
                 }).showToast(); 
-         }
-        else if(option) {
+         } else if(option) {
+             state.disable = false;
             celsius = state.temperature;
             state.result  = Math.round(celsius * 9 / 5 + 32) +'\xB0C.';
             commit('celsiusToFahrenheit', state.result);
             console.log(state.temperature);
         } else if (anotherOption) {
+            state.disable = false;
             celsius = state.temperature;
             state.result  = Math.round((celsius - 32) * 5 / 9)+'\xB0F';
             commit('fahrenheitToCelsius', state.result); 
