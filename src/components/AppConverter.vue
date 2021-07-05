@@ -6,11 +6,11 @@
                 <form  class="temperature">
                     <label for="degrees">Degrees</label>
                     <input type="text" v-model="temperature">
-                        <label for="type">From</label>
-                        <select name="Temperatures" id="Temperature" @change="changeTemp">
-                            <option v-for='type in selected' :key='type'>{{ type }}</option>
-                        </select>
-                        <button  @click.prevent="cToF" class="convert" value="submit" type="submit">Convert</button>
+                    <label for="type">From</label>
+                    <select name="Temperatures" id="Temperature" @change="changeTemp">
+                        <option v-for='type in selected' :key='type'>{{ type }}</option>
+                    </select>
+                    <button :disabled="temperature == ''"  @click.prevent="cToF" class="convert" value="submit" type="submit">Convert</button>
                 </form>
                 <div class="result">
                             <p>Result</p>
@@ -51,6 +51,9 @@ export default {
         },
         temp () {
             return this.$store.getters.temp
+        },
+        disable () {
+            return this.$store.getters.disable
         },
         temperature: {
             get () {
@@ -230,7 +233,6 @@ h2.inset {
         font-size: 12px;
     }
     h2.inset {
-        height: 2rem;
         width: 90%;
         margin-left:0rem;
     }
